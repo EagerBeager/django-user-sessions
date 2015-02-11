@@ -9,10 +9,12 @@ from django.utils.translation import ugettext_lazy as _, ugettext
 register = template.Library()
 
 BROWSERS = (
+    (re.compile('OPR'), _('Opera')),
     (re.compile('Chrome'), _('Chrome')),
     (re.compile('Safari'), _('Safari')),
     (re.compile('Firefox'), _('Firefox')),
     (re.compile('Opera'), _('Opera')),
+    (re.compile('Trident'), _('Internet Explorer')),
     (re.compile('IE'), _('Internet Explorer')),
 )
 DEVICES = (
