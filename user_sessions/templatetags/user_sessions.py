@@ -78,8 +78,8 @@ def location(value):
             return location['country_name']
     return mark_safe('<i>%s</i>' % ugettext('unknown'))
 
-_geoip = None
 
+_geoip = None
 
 def geoip():
     global _geoip
