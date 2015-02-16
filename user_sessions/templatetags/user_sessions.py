@@ -1,10 +1,10 @@
 import re
-import warnings
 
 from django import template
-from django.contrib.gis.geoip import HAS_GEOIP
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _, ugettext
+
+from ..utils.geo import geoip
 
 register = template.Library()
 
@@ -79,14 +79,3 @@ def location(value):
     return mark_safe('<i>%s</i>' % ugettext('unknown'))
 
 
-_geoip = None
-
-def geoip():
-    global _geoip
-    if _geoip is None and HAS_GEOIP:
-        from django.contrib.gis.geoip import GeoIP
-        try:
-            _geoip = GeoIP()
-        except Exception as e:
-            warnings.warn(str(e))
-    return _geoip
